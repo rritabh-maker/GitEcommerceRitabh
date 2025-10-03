@@ -6,11 +6,6 @@
     </listeners>
     
     <test thread-count="1" name="Submit Order Test">
-        <groups>
-            <run>
-                <include name="Purchase"/>
-            </run>
-        </groups>
         <classes>
             <class name="ritabhSelenium.eCommerce.submitOrderTest"/>
         </classes>
