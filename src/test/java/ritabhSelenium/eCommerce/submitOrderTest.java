@@ -49,12 +49,12 @@ public class submitOrderTest extends BaseTest {
 		map.put("country", "India");
 
 		HashMap<String, String> map1 = new HashMap<String, String>();
-		map.put("email", "anshika@gmail.com");
-		map.put("password", "Iamking@000");
-		map.put("productName1", "ZARA COAT 3");
-		map.put("productName2", "ADIDAS ORIGINAL");
-		map.put("amount", " MRP $ 11500");
-		map.put("country", "India");
+		map1.put("email", "anshika@gmail.com");
+		map1.put("password", "Iamking@000");
+		map1.put("productName1", "ZARA COAT 3");
+		map1.put("productName2", "ADIDAS ORIGINAL");
+		map1.put("amount", " MRP $ 11500");
+		map1.put("country", "India");
 
 		return new Object[][] { { map }, { map1 } };
 	}
