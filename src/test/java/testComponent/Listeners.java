@@ -33,19 +33,21 @@ public class Listeners extends BaseTest implements ITestListener {
 	@Override
 	public void onTestFailure(ITestResult result) {
 		test.fail(result.getThrowable());
+		
 		try {
-			driver = (WebDriver) result.getTestClass().getRealClass().getField("driver").get(result.getInstance());
+			driver = (WebDriver) result.getTestClass().getRealClass().getSuperclass().getDeclaredField("driver").get(result.getInstance());
 		} catch (Exception e1) {
 			e1.printStackTrace();
 		}
-		String filePath = null;
-		try {
-			filePath = getScreenShot(result.getMethod().getMethodName(), driver);
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		
+		if (driver != null) {
+			try {
+				String filePath = getScreenShot(result.getMethod().getMethodName(), driver);
+				test.addScreenCaptureFromPath(filePath, result.getMethod().getMethodName());
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
 		}
-		test.addScreenCaptureFromPath(filePath, result.getMethod().getMethodName());
 	}
 
 	@Override

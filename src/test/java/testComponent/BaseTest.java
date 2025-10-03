@@ -33,6 +33,11 @@ public class BaseTest {
 				System.getProperty("user.dir") + "//src//test//java//resources//GlobalData.properties");
 		prop.load(fis);
 		String browsername = prop.getProperty("browser");
+		
+		if (browsername == null || browsername.isEmpty()) {
+			browsername = "firefox"; // Default to Firefox if not specified
+		}
+		
 		if (browsername.equalsIgnoreCase("firefox")) {
 			WebDriverManager.firefoxdriver().setup();
 			
@@ -42,6 +47,7 @@ public class BaseTest {
 			
 			driver = new FirefoxDriver(options);
 			driver.manage().window().maximize();
+			driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 		}
 
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));

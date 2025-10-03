@@ -1,14 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
-<suite name="Suite">
-<listeners>
-<listener class-name="testComponent.Listeners"></listener></listeners>
-	<test name="submit order validation">
-		<classes>
-			<class name="ritabhSelenium.eCommerce.errorValidations">
-			<methods>
-			<include name="validateErrors"/></methods>
-			</class>
-		</classes>
-	</test>
+<suite name="eCommerce Test Suite" parallel="tests">
+    <listeners>
+        <listener class-name="testComponent.Listeners"/>
+    </listeners>
+    
+    <test thread-count="1" name="Submit Order Test">
+        <groups>
+            <run>
+                <include name="Purchase"/>
+            </run>
+        </groups>
+        <classes>
+            <class name="ritabhSelenium.eCommerce.submitOrderTest"/>
+        </classes>
+    </test>
+    
+    <test thread-count="1" name="Error Validation Test">
+        <classes>
+            <class name="ritabhSelenium.eCommerce.errorValidations"/>
+        </classes>
+    </test>
 </suite>
